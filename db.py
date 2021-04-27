@@ -11,7 +11,6 @@ def sendToDataBase(data):
         print("Computer Added")
         col.insert_one(data)
     else:
-        # DOES NOT WORK RIGHT NOW
         print("Computer Updated")
         col.update_one({"Computer": data["Computer"]}, {"$set": data})
 
