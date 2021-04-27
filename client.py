@@ -38,8 +38,22 @@ host = socket.gethostname()
 partitions = psutil.disk_partitions()
 client.send(bytes(host, 'UTF-8'))
 
-info = {"Computer": '',"Drive": '', "Usage": ''}
+info = {
+    "Computer": '',
+    "Drive": '', 
+    "Usage": '', 
+    "Month": '',
+    "Day": '',
+    "Time": '',
+    "Year": ''
+    }
+
 info["Computer"] = host
+updateTime = time.ctime().split(' ')
+info["Month"] = updateTime[1]
+info["Day"] = updateTime[2]
+info["Time"] = updateTime[3]
+info["Year"] = updateTime[4]
 
 for p in partitions:
     if (p.device != 'C:\\'):
