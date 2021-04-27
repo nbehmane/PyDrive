@@ -13,7 +13,7 @@ def sendToDataBase(data):
     else:
         # DOES NOT WORK RIGHT NOW
         print("Computer Updated")
-        col.update_one(data, data)
+        col.update_one({"Computer": data["Computer"]}, {"$set": data})
 
     client.close()
 
