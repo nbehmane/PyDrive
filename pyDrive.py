@@ -1,8 +1,7 @@
 import socket
 import threading
 import json
-import parseJson
-import DB
+import db
 
 class ClientThread(threading.Thread):
     def __init__(self, clientAddress, clientSocket):
@@ -22,7 +21,7 @@ class ClientThread(threading.Thread):
 
             data = self.csocket.recv(2048)
             msg = json.loads(data) 
-            DB.sendToDataBase(msg)
+            db.sendToDataBase(msg)
             print("JSON: ", msg)
             self.csocket.send(data)
 
