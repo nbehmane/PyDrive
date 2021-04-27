@@ -8,9 +8,11 @@ def sendToDataBase(data):
     query = {"Computer": data["Computer"]}
     found = col.find(query)
     if found.count() == 0:
+        print("Computer Added")
         col.insert_one(data)
     else:
-        print("OBJECT EXISTS")
+        print("Computer Updated")
+        col.update_one(data)
 
     client.close()
 
