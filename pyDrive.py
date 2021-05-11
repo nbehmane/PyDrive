@@ -2,6 +2,7 @@ import socket
 import threading
 import json
 import db
+import time
 
 class ClientThread(threading.Thread):
     def __init__(self, clientAddress, clientSocket):
@@ -11,7 +12,7 @@ class ClientThread(threading.Thread):
         
     def run(self):
 
-        print("Connection from: ", clientAddress)
+        print("Connection from: {} at time {}", clientAddress, time.asctime())
         msg = ''
         while True:
             data = self.csocket.recv(2048)
@@ -44,7 +45,7 @@ PORT = 2457
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 server.bind((LOCALHOST, PORT))
-print("Server started")
+print("Server started at {}".format(time.asctime()))
 print("Waiting for client request..")
 while True:
     server.listen(5)
