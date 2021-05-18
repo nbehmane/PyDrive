@@ -2,6 +2,7 @@ import socket
 import psutil
 import json
 import time
+from local import LOCAL_CREDENTIALS
 
 def get_size(bytes, suffix="B"):
     """
@@ -25,8 +26,8 @@ def tryConnect(server):
         time.sleep(5)
         tryConnect(server)
  
-SERVER = "129.65.134.233"
-PORT = 2457
+SERVER = LOCAL_CREDENTIALS["SERVER"]
+PORT = LOCAL_CREDENTIALS["PORT"]
 server = (SERVER, PORT)
 
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)

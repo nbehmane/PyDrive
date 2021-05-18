@@ -3,6 +3,7 @@ import threading
 import json
 import db
 import time
+from local import LOCAL_CREDENTIALS
 
 class ClientThread(threading.Thread):
     def __init__(self, clientAddress, clientSocket):
@@ -37,9 +38,9 @@ class ClientThread(threading.Thread):
         
 
 # LOCALHOST -> Server host IP
-LOCALHOST = "129.65.134.233"
+LOCALHOST = LOCAL_CREDENTIALS["SERVER"]
 # PORT -> Port opened for server to client connection
-PORT = 2457
+PORT = LOCAL_CREDENTIALS["PORT"]
 
 # bind the server
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
