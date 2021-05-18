@@ -17,14 +17,18 @@ def get_size(bytes, suffix="B"):
             return f"{bytes:.2f}{unit}{suffix}"
         bytes /= factor
 
-def tryConnect(server):
+count = 0
+def tryConnect(server, count):
     try:
         client.connect(server)
+        count += 1
     except ConnectionRefusedError:
+        if count == 5:
+            quit()
         print("CONNECTION REFUSED OR BUSY")
         print("Waiting 5 seconds...")
         time.sleep(5)
-        tryConnect(server)
+        tryConnect(server, count)
  
 SERVER = LOCAL_CREDENTIALS["SERVER"]
 PORT = LOCAL_CREDENTIALS["PORT"]
