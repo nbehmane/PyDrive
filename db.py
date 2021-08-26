@@ -16,8 +16,6 @@ def sendToDataBase(data):
 
     client.close()
 
-
-
 # This is for external use and should not be used
 # unless called explicity in pyDrive.py
 # This function is mostly used for testing purposes.
