@@ -6,7 +6,23 @@ from local import LOCAL_CREDENTIALS
 from funcs import get_size
 from uuid import getnode as get_mac
 
+info = {
+    "Computer": '',
+    "Drive": '', 
+    "Usage": '', 
+    "Year": '',
+    "Month": '',
+    "Day": '',
+    "Time": '',
+    "MAC": ''
+    }
+
 count = 0
+SERVER = LOCAL_CREDENTIALS["SERVER"]
+PORT = LOCAL_CREDENTIALS["PORT"]
+server = (SERVER, PORT)
+client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
 def tryConnect(server, count):
     try:
         client.connect(server)
@@ -20,11 +36,6 @@ def tryConnect(server, count):
         time.sleep(5)
         tryConnect(server, count)
  
-SERVER = LOCAL_CREDENTIALS["SERVER"]
-PORT = LOCAL_CREDENTIALS["PORT"]
-server = (SERVER, PORT)
-
-client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 tryConnect(server, count)
 print("CONNECTION ESTABLISHED")
@@ -33,16 +44,6 @@ host = socket.gethostname()
 partitions = psutil.disk_partitions()
 client.send(bytes(host, 'UTF-8'))
 
-info = {
-    "Computer": '',
-    "Drive": '', 
-    "Usage": '', 
-    "Year": '',
-    "Month": '',
-    "Day": '',
-    "Time": '',
-    "MAC": ''
-    }
 
 info["Computer"] = host
 updateTime = time.localtime()
