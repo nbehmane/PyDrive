@@ -50,7 +50,7 @@ info["Month"] = updateTime[1]
 info["Day"] = updateTime[2]
 info["Time"] = f'{updateTime[3]}:{updateTime[4]}:{updateTime[5]}'
 info["Year"] = updateTime[0]
-info["MAC"] = get_mac()
+info["MAC"] = hex(get_mac())
 
 for p in partitions:
     if (p.device != 'C:\\'):
