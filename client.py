@@ -36,17 +36,17 @@ info = {
     "Computer": '',
     "Drive": '', 
     "Usage": '', 
+    "Year": '',
     "Month": '',
     "Day": '',
-    "Time": '',
-    "Year": ''
+    "Time": ''
     }
 
 info["Computer"] = host
 updateTime = time.localtime()
 info["Month"] = updateTime[1]
 info["Day"] = updateTime[2]
-info["Time"] = f'{updateTime[3]} {updateTime[4]} {updateTime[5]}'
+info["Time"] = f'{updateTime[3]}:{updateTime[4]}:{updateTime[5]}'
 info["Year"] = updateTime[0]
 
 for p in partitions:
