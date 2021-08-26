@@ -50,7 +50,9 @@ info["Month"] = updateTime[1]
 info["Day"] = updateTime[2]
 info["Time"] = f'{updateTime[3]}:{updateTime[4]}:{updateTime[5]}'
 info["Year"] = updateTime[0]
-info["MAC"] = hex(get_mac())
+
+mac_test = hex(get_mac()) if hex(get_mac()) == hex(get_mac()) else 0xDEADDEAD
+info["MAC"] = mac_test
 
 for p in partitions:
     if (p.device != 'C:\\'):
