@@ -13,7 +13,7 @@ class ClientThread(threading.Thread):
         
     def run(self):
 
-        print("Connection from: {} at time {}", clientAddress, time.asctime())
+        print(f"Connection from: {clientAddress} at time {time.asctime()}")
         msg = ''
         while True:
             data = self.csocket.recv(2048)
