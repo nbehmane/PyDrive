@@ -43,11 +43,11 @@ info = {
     }
 
 info["Computer"] = host
-updateTime = time.ctime().split(' ')
+updateTime = time.localtime()
 info["Month"] = updateTime[1]
-info["Day"] = updateTime[3]
-info["Time"] = updateTime[4]
-info["Year"] = updateTime[5]
+info["Day"] = updateTime[2]
+info["Time"] = f'{updateTime[3]} {updateTime[4]} {updateTime[5]}'
+info["Year"] = updateTime[0]
 
 for p in partitions:
     if (p.device != 'C:\\'):
