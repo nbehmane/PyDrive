@@ -4,6 +4,7 @@ import json
 import time
 from local import LOCAL_CREDENTIALS
 from funcs import get_size
+from uuid import getnode as get_mac
 
 count = 0
 def tryConnect(server, count):
@@ -39,7 +40,8 @@ info = {
     "Year": '',
     "Month": '',
     "Day": '',
-    "Time": ''
+    "Time": '',
+    "MAC": ''
     }
 
 info["Computer"] = host
@@ -48,6 +50,7 @@ info["Month"] = updateTime[1]
 info["Day"] = updateTime[2]
 info["Time"] = f'{updateTime[3]}:{updateTime[4]}:{updateTime[5]}'
 info["Year"] = updateTime[0]
+info["MAC"] = get_mac()
 
 for p in partitions:
     if (p.device != 'C:\\'):
