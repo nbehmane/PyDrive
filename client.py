@@ -25,7 +25,7 @@ server = (SERVER, PORT)
 
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-tryConnect(server)
+tryConnect(server, count)
 print("CONNECTION ESTABLISHED")
 
 host = socket.gethostname()
