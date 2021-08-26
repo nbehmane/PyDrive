@@ -12,6 +12,7 @@ def tryConnect(server, count):
         count += 1
     except ConnectionRefusedError:
         if count == 5:
+            print("TIME OUT...")
             quit()
         print("CONNECTION REFUSED OR BUSY")
         print("Waiting 5 seconds...")
