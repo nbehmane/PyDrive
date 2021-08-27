@@ -54,7 +54,7 @@ info["Day"] = updateTime[2]
 info["Time"] = f'{updateTime[3]}:{updateTime[4]}:{updateTime[5]}'
 info["Year"] = updateTime[0]
 
-mac_test = hex(get_mac()) if hex(get_mac()) == hex(get_mac()) else 0xDEADDEAD
+mac_test = hex(get_mac()) if hex(get_mac()) == hex(get_mac()) else 0xDEADDEADBEEF
 info["MAC"] = mac_test.replace('0x', '')
 
 for p in partitions:
