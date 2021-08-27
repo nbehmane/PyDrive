@@ -7,7 +7,6 @@ import psutil
 import json
 import time
 
-count = 0
 def tryConnect(server, count):
     try:
         client.connect(server)
@@ -24,9 +23,9 @@ def tryConnect(server, count):
 SERVER = LOCAL_CREDENTIALS["SERVER"]
 PORT = LOCAL_CREDENTIALS["PORT"]
 server = (SERVER, PORT)
-
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
+count = 0
 tryConnect(server, count)
 print("CONNECTION ESTABLISHED")
 
