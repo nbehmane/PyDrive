@@ -43,7 +43,7 @@ info = {
     "Month": '',
     "Day": '',
     "Time": '',
-    "MAC": ''
+    "MAC": '' 
     }
 
 info["Computer"] = host
