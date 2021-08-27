@@ -16,18 +16,18 @@ class ClientThread(threading.Thread):
         print(f"Connection from: {clientAddress} at time {time.asctime()}")
         msg = ''
         while True:
-            data = self.csocket.recv(2048)
+            data = self.csocket.recv(4096)
             msg = data.decode()
             print("COMPUTER: ", msg)
             self.csocket.send(bytes(msg, 'utf-8'))
 
-            data = self.csocket.recv(2048)
+            data = self.csocket.recv(4096)
             msg = json.loads(data) 
             db.sendToDataBase(msg)
             print("JSON: ", msg)
             self.csocket.send(data)
 
-            data = self.csocket.recv(2048)
+            data = self.csocket.recv(4096)
             msg = data.decode()
             print("DONE RECIEVING: ", msg)
             self.csocket.send(bytes(msg, 'utf-8'))

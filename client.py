@@ -70,20 +70,20 @@ for p in partitions:
         continue
 serial = json.dumps(info)
 
-in_data =  client.recv(1024)
+in_data =  client.recv(2048)
 print("From Server : ", in_data.decode())
 
 while True:
     out_data = serial
     client.send(bytes(out_data,'UTF-8'))
 
-    in_data =  client.recv(1024)
+    in_data =  client.recv(2048)
     print("From Server : ", in_data.decode())
     
     out_data = 'DONE'
     client.send(bytes(out_data,'UTF-8'))
 
-    in_data =  client.recv(1024)
+    in_data =  client.recv(2048)
     print("From Server : ", in_data.decode())
     break
 client.close()
