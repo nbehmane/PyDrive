@@ -1,10 +1,11 @@
+
+from local import LOCAL_CREDENTIALS
+from funcs import get_size
+from uuid import getnode as get_mac
 import socket
 import psutil
 import json
 import time
-from local import LOCAL_CREDENTIALS
-from funcs import get_size
-from uuid import getnode as get_mac
 
 count = 0
 def tryConnect(server, count):
