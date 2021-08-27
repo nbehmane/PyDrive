@@ -36,7 +36,9 @@ client.send(bytes(host, 'UTF-8'))
 info = {
     "Computer": '',
     "Drive": '', 
-    "Usage": '', 
+    "Total Space": '',
+    "Total Used": '',
+    "Total Free": '', 
     "Year": '',
     "Month": '',
     "Day": '',
@@ -61,8 +63,9 @@ for p in partitions:
         info["Drive"] = p.device
     try:
         usage = psutil.disk_usage(p.mountpoint)
-        mes = get_size(usage.total)
-        info["Usage"] = mes
+        info["Total Space"] = get_size(usage.total)
+        info["Total Used"] = get_size(usage.used)
+        info["Total Free"] = get_size(usage.free)
     except PermissionError:
         continue
 serial = json.dumps(info)
