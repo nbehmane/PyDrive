@@ -36,18 +36,22 @@ def importComputerData():
     sheet['D1'] = "Total Space"
     sheet['E1'] = "Total Used"
     sheet['F1'] = "Total Free"
-    sheet['G1'] = "Time"
+    sheet['G1'] = "Time Updated"
+    sheet['H1'] = "Date Updated"
 
     computers = col.find({})
     count = 2
     for comp in computers:
+        mac = comp["MAC"]
         sheet[f'A{count}'] = comp["Computer"]
-        sheet[f'B{count}'] = comp["MAC"]
+        sheet[f'B{count}'] = f'{mac[0:2]}:{mac[2:4]}:{mac[4:6]}:{mac[6:8]}:{mac[8:10]}:{mac[10:12]}'
         sheet[f'C{count}'] = comp["Drive"]
         sheet[f'D{count}'] = comp["Total Space"]
         sheet[f'E{count}'] = comp["Total Used"]
         sheet[f'F{count}'] = comp["Total Free"]
         sheet[f'G{count}'] = comp["Time"]
+        sheet[f'H{count}'] = f'{comp["Month"]}/{comp["Day"]}/{comp["Year"]}'
+
         count += 1
     wb.save(filename="comps.xlsx")
 
