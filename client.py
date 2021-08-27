@@ -20,9 +20,7 @@ def tryConnect(server, count):
         time.sleep(5)
         tryConnect(server, count)
  
-SERVER = LOCAL_CREDENTIALS["SERVER"]
-PORT = LOCAL_CREDENTIALS["PORT"]
-server = (SERVER, PORT)
+server = (LOCAL_CREDENTIALS["SERVER"], LOCAL_CREDENTIALS["PORT"])
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 count = 0
