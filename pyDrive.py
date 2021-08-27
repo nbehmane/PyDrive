@@ -1,9 +1,9 @@
+from local import LOCAL_CREDENTIALS
 import socket
 import threading
 import json
 import db
 import time
-from local import LOCAL_CREDENTIALS
 
 class ClientThread(threading.Thread):
     def __init__(self, clientAddress, clientSocket):

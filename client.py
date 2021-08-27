@@ -1,6 +1,6 @@
 
 from local import LOCAL_CREDENTIALS
-from funcs import get_size
+from funcs import getSize
 from uuid import getnode as get_mac
 import socket
 import psutil
@@ -51,8 +51,8 @@ info["Day"] = updateTime[2]
 info["Time"] = f'{updateTime[3]}:{updateTime[4]}:{updateTime[5]}'
 info["Year"] = updateTime[0]
 
-mac_test = hex(get_mac()) if hex(get_mac()) == hex(get_mac()) else 0xDEADDEADBEEF
-info["MAC"] = mac_test.replace('0x', '')
+macTest = hex(get_mac()) if hex(get_mac()) == hex(get_mac()) else 0xDEADDEADBEEF
+info["MAC"] = macTest.replace('0x', '')
 
 for p in partitions:
     if (p.device != 'C:\\'):
@@ -61,27 +61,27 @@ for p in partitions:
         info["Drive"] = p.device
     try:
         usage = psutil.disk_usage(p.mountpoint)
-        info["Total Space"] = get_size(usage.total)
-        info["Total Used"] = get_size(usage.used)
-        info["Total Free"] = get_size(usage.free)
+        info["Total Space"] = getSize(usage.total)
+        info["Total Used"] = getSize(usage.used)
+        info["Total Free"] = getSize(usage.free)
     except PermissionError:
         continue
 serial = json.dumps(info)
 
-in_data =  client.recv(2048)
-print("From Server : ", in_data.decode())
+inData =  client.recv(2048)
+print("From Server : ", inData.decode())
 
 while True:
-    out_data = serial
-    client.send(bytes(out_data,'UTF-8'))
+    outData = serial
+    client.send(bytes(outData,'UTF-8'))
 
-    in_data =  client.recv(2048)
-    print("From Server : ", in_data.decode())
+    inData =  client.recv(2048)
+    print("From Server : ", inData.decode())
     
-    out_data = 'DONE'
-    client.send(bytes(out_data,'UTF-8'))
+    outData = 'DONE'
+    client.send(bytes(outData,'UTF-8'))
 
-    in_data =  client.recv(2048)
-    print("From Server : ", in_data.decode())
+    inData =  client.recv(2048)
+    print("From Server : ", inData.decode())
     break
 client.close()

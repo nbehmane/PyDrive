@@ -1,5 +1,5 @@
 
-def get_size(bytes, suffix="B"):
+def getSize(bytes, suffix="B"):
     """
     Scale bytes to its proper format
     e.g:
