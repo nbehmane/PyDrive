@@ -1,4 +1,5 @@
 from pymongo import MongoClient
+import openpyxl
 
 def sendToDataBase(data):
     client = MongoClient()
@@ -16,14 +17,12 @@ def sendToDataBase(data):
 
     client.close()
 
-
-
-# This is for external use and should not be used
-# unless called explicity in pyDrive.py
-# This function is mostly used for testing purposes.
 def deleteAllEntries():
     client = MongoClient()
     db = client.computers
     col = db["computers"]
-
     col.remove({})
+
+
+def dumpExcel():
+    pass
